@@ -56,7 +56,7 @@ class _Jointheteam_pageState extends State<Jointheteam_page> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Fill the form",
+                        Text("Please fill in the form below :",
                             style: TextStyle(
                                 color: primaryBlack,
                                 fontSize: small,

@@ -348,7 +348,7 @@ class _Podcast_pageState extends State<Podcast_page> {
                         style: TextStyle(
                             letterSpacing: 2,
                             color: primaryWhite,
-                            fontSize: small,
+                            fontSize: medium,
                             fontFamily: "GlacialIndifference",
                             fontWeight: FontWeight.w400)),
                     shape: new RoundedRectangleBorder(

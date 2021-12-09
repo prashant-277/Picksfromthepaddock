@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:picksfromthepaddock/MENU/Meettheteam_page.dart';
 import 'package:picksfromthepaddock/MENU/Podcast_page.dart';
+import 'package:picksfromthepaddock/MENU/Profile_page.dart';
 import 'package:picksfromthepaddock/MENU/RaceCard_page.dart';
 import 'package:picksfromthepaddock/MENU/Statistics_page.dart';
 import 'package:picksfromthepaddock/MENU/Video_page.dart';
@@ -46,7 +47,7 @@ class _Menu_pageState extends State<Menu_page> {
             child: Center(
               child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,
-                alignment: WrapAlignment.center,
+                alignment: WrapAlignment.start,
                 spacing: 35.0,
                 runSpacing: 35.0,
                 direction: Axis.horizontal,
@@ -373,6 +374,28 @@ class _Menu_pageState extends State<Menu_page> {
                       children: [
                         Image.asset("Assets/Icons/settings.png", width: 23.w),
                         Text("SETTINGS",
+                            style: TextStyle(
+                                color: primaryBlack,
+                                fontSize: small,
+                                fontFamily: "GlacialIndifference",
+                                fontWeight: FontWeight.w700))
+                      ],
+                    ),
+                  ),
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              type: PageTransitionType.fade,
+                              alignment: Alignment.bottomCenter,
+                              duration: Duration(milliseconds: 300),
+                              child: Profile_page("menu")));
+                    },
+                    child: Column(
+                      children: [
+                        Image.asset("Assets/Icons/profile.png", width: 23.w),
+                        Text("MY PROFILE",
                             style: TextStyle(
                                 color: primaryBlack,
                                 fontSize: small,

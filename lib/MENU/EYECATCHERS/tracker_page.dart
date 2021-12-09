@@ -61,7 +61,7 @@ class _tracker_pageState extends State<tracker_page> {
               SizedBox(height: 3.h),
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(10),
                   color: primaryWhite,
                 ),
                 child: Column(

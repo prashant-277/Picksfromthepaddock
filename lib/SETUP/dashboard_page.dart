@@ -32,6 +32,7 @@ class _dashboard_pageState extends State<dashboard_page> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: primaryBlack,
+          automaticallyImplyLeading: false,
           title: Image.asset(
             "Assets/Images/logo2.png",
             width: 80.w,
@@ -103,9 +104,9 @@ class _dashboard_pageState extends State<dashboard_page> {
                   'Assets/Icons/tips.png',
                   width: 6.w,
                 ),
-                onPressed: (){
+                onPressed: () {
                   setState(() {
-                    currentIndex=1;
+                    currentIndex = 1;
                   });
                 },
               ),
@@ -189,7 +190,6 @@ class _dashboard_pageState extends State<dashboard_page> {
           currentIndex: currentIndex,
         ),
         body: Stack(
-
           children: <Widget>[
             _buildPageOffstage(navigatorKeys[0], 0, "HOME"),
             _buildPageOffstage(navigatorKeys[1], 1, "TIPS"),

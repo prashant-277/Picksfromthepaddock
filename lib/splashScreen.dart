@@ -2,9 +2,10 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:picksfromthepaddock/SETUP/constants.dart';
-import 'package:picksfromthepaddock/SETUP/dashboard_page.dart';
 import 'package:show_up_animation/show_up_animation.dart';
 import 'package:sizer/sizer.dart';
+
+import 'Registration/signUp.dart';
 
 class splashScreen extends StatefulWidget {
   @override
@@ -59,7 +60,7 @@ class _splashScreenState extends State<splashScreen> {
           ),
           pageTransitionType: PageTransitionType.fade,
           splashTransition: SplashTransition.fadeTransition,
-          nextScreen: dashboard_page()
+          nextScreen: signUp()
       ),
     );
   }

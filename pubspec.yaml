@@ -34,6 +34,7 @@ dependencies:
   sizer:
   intl:
   animated_splash_screen:
+  otp_text_field: ^1.1.1
   page_transition: ^2.0.0
   show_up_animation: ^2.0.0
   flutter_carousel_slider:

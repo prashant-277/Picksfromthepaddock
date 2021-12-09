@@ -16,62 +16,81 @@ class _searchPageState extends State<searchPage> {
           backgroundColor: primaryBlack,
           automaticallyImplyLeading: false,
           centerTitle: false,
-          leading: IconButton(
-            icon: new Image.asset(
-              'Assets/Icons/back.png',
-              width: 15.0,
-              height: 15.0,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-          title: Container(
-            height: 6.h,
-            child: TextFormField(
-              style: TextStyle(
-                fontFamily: "GlacialIndifference",
-                fontSize: medium,
-                fontWeight: FontWeight.w500,
-                color: primaryBlack,
-                decoration: TextDecoration.none,
+          // leading: IconButton(
+          //   padding: EdgeInsets.zero,
+          //
+          //   icon: new Image.asset(
+          //     'Assets/Icons/back.png',
+          //     width: 15.0,
+          //     height: 15.0,
+          //   ),
+          //   onPressed: () {
+          //     Navigator.pop(context);
+          //   },
+          // ),
+          title: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                onTap: (){
+                  Navigator.pop(context);
+                },
+                child: Image.asset(
+                  'Assets/Icons/back.png',
+                  width: 3.w,
+                  height: 3.h,
+                ),
               ),
-              autocorrect: true,
-              enableSuggestions: true,
-              autofocus: true,
-              maxLines: 1,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(100.0),
+              Container(
+                height: 6.h,
+                width: MediaQuery.of(context).size.width / 1.2,
+                child: TextFormField(
+                  style: TextStyle(
+                    fontFamily: "GlacialIndifference",
+                    fontSize: medium,
+                    fontWeight: FontWeight.w500,
+                    color: primaryBlack,
+                    decoration: TextDecoration.none,
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(100.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(100.0),
-                  ),
-                  isDense: true,
-                  contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                  filled: true,
-                  hintStyle: TextStyle(
-                      fontFamily: "GlacialIndifference",
-                      fontSize: medium,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.grey),
-                  prefixIcon: new IconButton(
-                    icon: new Image.asset(
-                      'Assets/Icons/search2.png',
-                      width: 15.0,
-                      height: 15.0,
-                    ),
-                    onPressed: null,
-                  ),
-                  hintText: "Type here...",
-                  fillColor: primaryWhite),
-              cursorColor: primaryBlack,
-              cursorWidth: 1.0,
-              cursorHeight: 3.h,
-            ),
+                  autocorrect: true,
+                  enableSuggestions: true,
+                  autofocus: true,
+                  maxLines: 1,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(100.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(100.0)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(100.0),
+                      ),
+                      isDense: true,
+                      contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                      filled: true,
+                      hintStyle: TextStyle(
+                          fontFamily: "GlacialIndifference",
+                          fontSize: medium,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey),
+                      prefixIcon: new IconButton(
+                        icon: new Image.asset(
+                          'Assets/Icons/search2.png',
+                          width: 15.0,
+                          height: 15.0,
+                        ),
+                        onPressed: null,
+                      ),
+                      hintText: "Type here...",
+                      fillColor: primaryWhite),
+                  cursorColor: primaryBlack,
+                  cursorWidth: 1.0,
+                  cursorHeight: 3.h,
+                ),
+              ),
+            ],
           )),
       body: Container(
         child: Center(
