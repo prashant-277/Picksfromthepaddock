@@ -45,6 +45,7 @@ class _homepageState extends State<homepage> {
       height: query.height,
       width: query.width,
       child: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -87,7 +88,7 @@ class _homepageState extends State<homepage> {
               color: backgroundColor,
             ),
             Container(
-              height: query.height * 0.13,
+              height: query.height * 0.12,
               color: primaryBlack,
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -234,7 +235,7 @@ class _homepageState extends State<homepage> {
                       child: Image.asset("Assets/Icons/statistic.png",
                           width: 16.w)),
                   SizedBox(width: 3.w),
-                  InkWell(
+                  /*InkWell(
                       onTap: () {
                         Navigator.push(
                             context,
@@ -294,15 +295,15 @@ class _homepageState extends State<homepage> {
                                 duration: Duration(milliseconds: 300),
                                 child: Profile_page("menu")));
                       },
-                      child: Image.asset("Assets/Icons/profile.png",
-                          width: 16.w)),
-                  SizedBox(width: 3.w),
+                      child:
+                          Image.asset("Assets/Icons/profile.png", width: 16.w)),
+                  SizedBox(width: 3.w),*/
                 ],
               ),
             ),
             Container(
               width: query.width,
-              height: query.height * 0.13,
+              height: query.height * 0.12,
               color: primaryWhite,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -343,7 +344,7 @@ class _homepageState extends State<homepage> {
               ),
             ),
             Container(
-              height: query.height * 0.24,
+              height: query.height * 0.23,
               color: backgroundColor,
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -363,43 +364,9 @@ class _homepageState extends State<homepage> {
                           Image.asset("Assets/Icons/slide1.png", width: 70.w)),
                   SizedBox(width: 5.w),
                   InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                alignment: Alignment.bottomCenter,
-                                duration: Duration(milliseconds: 300),
-                                child: horsetofollow("menu")));
-                      },
+                      onTap: () {},
                       child:
-                          Image.asset("Assets/Icons/slide2.png", width: 70.w)),
-                  SizedBox(width: 5.w),
-                  InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                alignment: Alignment.bottomCenter,
-                                duration: Duration(milliseconds: 300),
-                                child: informJockys("menu")));
-                      },
-                      child:
-                          Image.asset("Assets/Icons/slide3.png", width: 70.w)),
-                  SizedBox(width: 5.w),
-                  InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                alignment: Alignment.bottomCenter,
-                                duration: Duration(milliseconds: 300),
-                                child: longestTraeller("menu")));
-                      },
-                      child:
-                          Image.asset("Assets/Icons/slide4.png", width: 70.w)),
+                          Image.asset("Assets/Icons/slide8.png", width: 70.w)),
                   SizedBox(width: 5.w),
                   InkWell(
                       onTap: () {
@@ -422,10 +389,23 @@ class _homepageState extends State<homepage> {
                                 type: PageTransitionType.fade,
                                 alignment: Alignment.bottomCenter,
                                 duration: Duration(milliseconds: 300),
-                                child: silkMagazine("menu")));
+                                child: longestTraeller("menu")));
                       },
                       child:
-                          Image.asset("Assets/Icons/slide6.png", width: 70.w)),
+                          Image.asset("Assets/Icons/slide4.png", width: 70.w)),
+                  SizedBox(width: 5.w),
+                  InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.fade,
+                                alignment: Alignment.bottomCenter,
+                                duration: Duration(milliseconds: 300),
+                                child: informJockys("menu")));
+                      },
+                      child:
+                          Image.asset("Assets/Icons/slide3.png", width: 70.w)),
                   SizedBox(width: 5.w),
                   InkWell(
                       onTap: () {
@@ -441,9 +421,30 @@ class _homepageState extends State<homepage> {
                           Image.asset("Assets/Icons/slide7.png", width: 70.w)),
                   SizedBox(width: 5.w),
                   InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.fade,
+                                alignment: Alignment.bottomCenter,
+                                duration: Duration(milliseconds: 300),
+                                child: horsetofollow("menu")));
+                      },
                       child:
-                          Image.asset("Assets/Icons/slide8.png", width: 70.w)),
+                          Image.asset("Assets/Icons/slide2.png", width: 70.w)),
+                  SizedBox(width: 5.w),
+                  InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.fade,
+                                alignment: Alignment.bottomCenter,
+                                duration: Duration(milliseconds: 300),
+                                child: silkMagazine("menu")));
+                      },
+                      child:
+                          Image.asset("Assets/Icons/slide6.png", width: 70.w)),
                   SizedBox(width: 5.w),
                 ],
               ),

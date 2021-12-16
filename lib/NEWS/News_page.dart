@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:picksfromthepaddock/SETUP/constants.dart';
+import 'package:picksfromthepaddock/SETUP/dashcontrol.dart';
 import 'package:picksfromthepaddock/WIDGET/appbarCustom.dart';
 import 'package:sizer/sizer.dart';
 
@@ -15,15 +18,52 @@ class News_page extends StatefulWidget {
 }
 
 class _News_pageState extends State<News_page> {
+  dashController dash = Get.find();
+
   @override
   Widget build(BuildContext context) {
     var query = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: BaseAppBar(
-        imageBack: widget.check=="menu"?true: false,
-        appBar: AppBar(),
-        headerText: "NEWS",
-        widgets: [
+      appBar: AppBar(
+        backgroundColor: backgroundColor,
+        elevation: 0,
+        centerTitle: false,
+        automaticallyImplyLeading: false,
+        titleSpacing: 5,
+        title: FlatButton(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          padding: EdgeInsets.zero,
+          onPressed: null,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              InkWell(
+                onTap: () {
+                  dash.currentIndex.value = 0;
+                }
+                ,
+                child: Image.asset(
+                  "Assets/Icons/backBlack.png",
+                  height: large,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 5.0),
+                child: Text(
+                  "NEWS",
+                  style: TextStyle(
+                      fontSize: large,
+                      color: primaryRed,
+                      fontFamily: "LeagueSpartan"),
+                ),
+              ),
+            ],
+          ),
+        ),
+        actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: Image.asset(

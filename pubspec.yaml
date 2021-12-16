@@ -40,6 +40,7 @@ dependencies:
   flutter_carousel_slider:
   flutter_rating_bar:
   webview_flutter:
+  get: ^3.26.0
 
 dev_dependencies:
   flutter_test:

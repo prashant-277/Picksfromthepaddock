@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:picksfromthepaddock/MENU/Meettheteam_page.dart';
 import 'package:picksfromthepaddock/MENU/Podcast_page.dart';
@@ -8,6 +10,7 @@ import 'package:picksfromthepaddock/MENU/Statistics_page.dart';
 import 'package:picksfromthepaddock/MENU/Video_page.dart';
 import 'package:picksfromthepaddock/NEWS/News_page.dart';
 import 'package:picksfromthepaddock/SETUP/constants.dart';
+import 'package:picksfromthepaddock/SETUP/dashcontrol.dart';
 import 'package:picksfromthepaddock/TIPS/Tips_page.dart';
 import 'package:picksfromthepaddock/WIDGET/appbarCustom.dart';
 import 'package:sizer/sizer.dart';
@@ -29,15 +32,51 @@ class Menu_page extends StatefulWidget {
 }
 
 class _Menu_pageState extends State<Menu_page> {
+  dashController dash = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: BaseAppBar(
-        appBar: AppBar(),
-        imageBack: false,
-        headerText: "MENU",
-        widgets: [Text("")],
+      appBar: AppBar(
+        backgroundColor: backgroundColor,
+        elevation: 0,
+        centerTitle: false,
+        automaticallyImplyLeading: false,
+        titleSpacing: 5,
+        title: FlatButton(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          padding: EdgeInsets.zero,
+          onPressed: null,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              InkWell(
+                onTap: () {
+                  dash.currentIndex.value = 0;
+                }
+                ,
+                child: Image.asset(
+                  "Assets/Icons/backBlack.png",
+                  height: large,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 5.0),
+                child: Text(
+                  "MENU",
+                  style: TextStyle(
+                      fontSize: large,
+                      color: primaryRed,
+                      fontFamily: "LeagueSpartan"),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(

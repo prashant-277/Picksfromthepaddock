@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:picksfromthepaddock/Registration/signin.dart';
 import 'package:picksfromthepaddock/SETUP/constants.dart';
-import 'package:picksfromthepaddock/WIDGET/appbarCustom.dart';
 import 'package:picksfromthepaddock/WIDGET/textfield.dart';
 import 'package:sizer/sizer.dart';
 
@@ -37,6 +36,7 @@ class _signUpState extends State<signUp> {
     return Scaffold(
       backgroundColor: cBlack,
       resizeToAvoidBottomInset: false,
+
       appBar: AppBar(
         backgroundColor: cBlack,
         elevation: 0,

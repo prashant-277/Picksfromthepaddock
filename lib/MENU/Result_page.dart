@@ -21,7 +21,7 @@ class _Result_pageState extends State<Result_page> {
       appBar: BaseAppBar(
         imageBack: widget.check == "menu" ? true : false,
         appBar: AppBar(),
-        headerText: "RESULT",
+        headerText: "RESULTS",
         widgets: [
           Padding(
             padding: const EdgeInsets.only(right: 8.0),

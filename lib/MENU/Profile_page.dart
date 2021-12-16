@@ -20,6 +20,7 @@ class _Profile_pageState extends State<Profile_page> {
     var query = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: backgroundColor,
+      resizeToAvoidBottomInset: false,
       appBar: BaseAppBar(
         imageBack: widget.check == "menu" ? true : false,
         appBar: AppBar(),
@@ -35,6 +36,7 @@ class _Profile_pageState extends State<Profile_page> {
         ],
       ),
       body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
         child: Container(
           height: query.height,
           width: query.width,
@@ -186,13 +188,15 @@ class _Profile_pageState extends State<Profile_page> {
                     ),
                   ),
                 ),
-                SizedBox(height: 2.h),
+                SizedBox(height: 4.h),
                 InkWell(
+                  highlightColor: Colors.transparent,
+                  splashColor: Colors.transparent,
                   onTap: () {},
                   child: Text(
                     "Logout",
                     style: TextStyle(
-                      height: 1.8.sp,
+                      //height: 1.8.sp,
                       color: primaryRed,
                       fontWeight: FontWeight.w700,
                       fontSize: medium,

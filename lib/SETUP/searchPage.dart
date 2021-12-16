@@ -16,18 +16,7 @@ class _searchPageState extends State<searchPage> {
           backgroundColor: primaryBlack,
           automaticallyImplyLeading: false,
           centerTitle: false,
-          // leading: IconButton(
-          //   padding: EdgeInsets.zero,
-          //
-          //   icon: new Image.asset(
-          //     'Assets/Icons/back.png',
-          //     width: 15.0,
-          //     height: 15.0,
-          //   ),
-          //   onPressed: () {
-          //     Navigator.pop(context);
-          //   },
-          // ),
+
           title: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

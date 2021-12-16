@@ -6,6 +6,7 @@ import 'package:show_up_animation/show_up_animation.dart';
 import 'package:sizer/sizer.dart';
 
 import 'Registration/signUp.dart';
+import 'SETUP/dashboard_page.dart';
 
 class splashScreen extends StatefulWidget {
   @override
@@ -60,7 +61,8 @@ class _splashScreenState extends State<splashScreen> {
           ),
           pageTransitionType: PageTransitionType.fade,
           splashTransition: SplashTransition.fadeTransition,
-          nextScreen: signUp()
+          nextScreen: dashboard_page()
+          //signUp()
       ),
     );
   }
