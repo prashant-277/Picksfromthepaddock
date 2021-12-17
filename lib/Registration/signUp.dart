@@ -36,7 +36,6 @@ class _signUpState extends State<signUp> {
     return Scaffold(
       backgroundColor: cBlack,
       resizeToAvoidBottomInset: false,
-
       appBar: AppBar(
         backgroundColor: cBlack,
         elevation: 0,
