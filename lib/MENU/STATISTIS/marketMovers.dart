@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:picksfromthepaddock/SETUP/constants.dart';
 import 'package:picksfromthepaddock/WIDGET/appbarCustom.dart';
 import 'package:sizer/sizer.dart';
+import 'package:webview_flutter/platform_interface.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class marketMovers extends StatefulWidget {
   var check;
@@ -33,6 +35,15 @@ class _marketMoversState extends State<marketMovers> {
         ],
       ),
       body: Container(
+        height: query.height,
+        width: query.width,
+        child: WebView(
+          initialUrl: 'http://icard.gbiracing.com/steamers',
+          javascriptMode: JavascriptMode.unrestricted,
+        ),
+      ),
+      //http://icard.gbiracing.com/steamers
+      /*Container(
         height: query.height,
         width: query.width,
         child: Padding(
@@ -665,7 +676,7 @@ class _marketMoversState extends State<marketMovers> {
             ),
           ),
         ),
-      ),
+      ),*/
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:picksfromthepaddock/SETUP/constants.dart';
 import 'package:picksfromthepaddock/WIDGET/appbarCustom.dart';
 import 'package:sizer/sizer.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class horsetofollow extends StatefulWidget {
   var check;
@@ -33,6 +34,14 @@ class _horsetofollowState extends State<horsetofollow> {
         ],
       ),
       body: Container(
+        height: query.height,
+        width: query.width,
+        child: WebView(
+          initialUrl: 'https://www.picksfromthepaddock.co.uk/online-store',
+          javascriptMode: JavascriptMode.unrestricted,
+        ),
+      ),
+      /*Container(
           height: query.height,
           width: query.width,
           child: Image.asset(
@@ -63,7 +72,7 @@ class _horsetofollowState extends State<horsetofollow> {
             ),
           ),
         ),
-      ),
+      ),*/
     );
   }
 }

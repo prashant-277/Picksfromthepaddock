@@ -1,7 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:picksfromthepaddock/SETUP/constants.dart';
 import 'package:picksfromthepaddock/WIDGET/appbarCustom.dart';
 import 'package:sizer/sizer.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class RaceCard_page extends StatefulWidget {
   var check;
@@ -13,9 +15,11 @@ class RaceCard_page extends StatefulWidget {
 }
 
 class _RaceCard_pageState extends State<RaceCard_page> {
+
   @override
   Widget build(BuildContext context) {
     var query = MediaQuery.of(context).size;
+
     return Scaffold(
         backgroundColor: backgroundColor,
         appBar: BaseAppBar(
@@ -33,6 +37,13 @@ class _RaceCard_pageState extends State<RaceCard_page> {
           ],
         ),
         body: Container(
+          child: WebView(
+            initialUrl: 'http://icard.gbiracing.com/racecard',
+            //javascriptMode: JavascriptMode.unrestricted,
+          ),
+        )
+    );
+      /*Container(
             height: query.height,
             width: query.width,
             child: Padding(
@@ -235,6 +246,7 @@ class _RaceCard_pageState extends State<RaceCard_page> {
                             ),
                           );
                   }),
-            )));
+            ))*/
+
   }
 }

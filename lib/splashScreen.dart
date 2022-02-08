@@ -21,15 +21,22 @@ class _splashScreenState extends State<splashScreen> {
       body: AnimatedSplashScreen(
           centered: true,
           splashIconSize: MediaQuery.of(context).size.height,
-          duration: 2000,
+          duration: 3000,
           backgroundColor: primaryBlack,
           splash: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(""),
-              Image.asset(
-                "Assets/Images/logo1.png",
-                height: 15.h,
+              ShowUpAnimation(
+                delayStart: Duration(milliseconds: 500),
+                animationDuration: Duration(milliseconds: 500),
+                curve: Curves.linear,
+                direction: Direction.vertical,
+                offset: 0.5,
+                child: Image.asset(
+                  "Assets/Images/logo1.png",
+                  height: 15.h,
+                ),
               ),
               ShowUpAnimation(
                 delayStart: Duration(milliseconds: 1000),

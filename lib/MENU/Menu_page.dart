@@ -3,11 +3,11 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:picksfromthepaddock/MENU/Meettheteam_page.dart';
-import 'package:picksfromthepaddock/MENU/Podcast_page.dart';
+import 'package:picksfromthepaddock/MENU/PODCAST/Podcast_page.dart';
 import 'package:picksfromthepaddock/MENU/Profile_page.dart';
 import 'package:picksfromthepaddock/MENU/RaceCard_page.dart';
 import 'package:picksfromthepaddock/MENU/Statistics_page.dart';
-import 'package:picksfromthepaddock/MENU/Video_page.dart';
+import 'package:picksfromthepaddock/MENU/VIDEO/Video_page.dart';
 import 'package:picksfromthepaddock/NEWS/News_page.dart';
 import 'package:picksfromthepaddock/SETUP/constants.dart';
 import 'package:picksfromthepaddock/SETUP/dashcontrol.dart';
@@ -313,6 +313,10 @@ class _Menu_pageState extends State<Menu_page> {
                   ),
                   InkWell(
                     onTap: (){
+
+                      // Navigator.of(context, rootNavigator: true)
+                      //     .push(MaterialPageRoute(
+                      //     builder: (context) => Statistics_page("menu")));
                       Navigator.push(
                           context,
                           PageTransition(
@@ -421,7 +425,7 @@ class _Menu_pageState extends State<Menu_page> {
                       ],
                     ),
                   ),
-                  InkWell(
+                  /*InkWell(
                     onTap: (){
                       Navigator.push(
                           context,
@@ -442,7 +446,7 @@ class _Menu_pageState extends State<Menu_page> {
                                 fontWeight: FontWeight.w700))
                       ],
                     ),
-                  ),
+                  ),*/
                 ],
               ),
             ),

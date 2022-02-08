@@ -34,7 +34,7 @@ class _silkMagazineState extends State<silkMagazine> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(60.0),
+        padding: const EdgeInsets.all(30.0),
         child: Container(
           height: query.height,
           width: query.width,

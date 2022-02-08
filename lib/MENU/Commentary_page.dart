@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:picksfromthepaddock/SETUP/constants.dart';
 import 'package:picksfromthepaddock/WIDGET/appbarCustom.dart';
 import 'package:sizer/sizer.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class Commentary_page extends StatefulWidget {
   var check;
@@ -18,6 +21,13 @@ class _Commentary_pageState extends State<Commentary_page> {
 
   var ratingStar;
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if (Platform.isAndroid) WebView.platform = AndroidWebView();
+
+  }
   @override
   Widget build(BuildContext context) {
     var query = MediaQuery.of(context).size;
@@ -38,6 +48,14 @@ class _Commentary_pageState extends State<Commentary_page> {
         ],
       ),
       body: Container(
+        height: query.height,
+        width: query.width,
+        child: WebView(
+          initialUrl: 'https://streema.com/radios/William_Hill_Racing_Radio',
+          javascriptMode: JavascriptMode.unrestricted,
+        ),
+      ),
+      /*Container(
         height: query.height,
         width: query.width,
         child: Padding(
@@ -272,7 +290,7 @@ class _Commentary_pageState extends State<Commentary_page> {
             ),
           ],
         ),
-      ),
+      ),*/
     );
   }
 }

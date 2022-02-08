@@ -2,26 +2,27 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:picksfromthepaddock/SETUP/constants.dart';
 import 'package:picksfromthepaddock/splashScreen.dart';
 import 'package:sizer/sizer.dart';
 
-class MyHttpOverrides extends HttpOverrides{
+class MyHttpOverrides extends HttpOverrides {
   @override
-  HttpClient createHttpClient(SecurityContext context){
+  HttpClient createHttpClient(SecurityContext context) {
     return super.createHttpClient(context)
-      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
 
 void main() {
-  HttpOverrides.global=new MyHttpOverrides();
+  HttpOverrides.global = new MyHttpOverrides();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       builder: (context, orientation, deviceType) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'ChatCity',
+          title: 'Picks from the paddock',
           theme: ThemeData(
             primaryColor: Color(0xff382177),
           ),
@@ -39,6 +40,4 @@ class MyApp extends StatelessWidget {
       },
     );
   }
-
-
 }

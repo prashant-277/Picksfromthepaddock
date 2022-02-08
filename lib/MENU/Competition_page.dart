@@ -42,8 +42,6 @@ class _Competition_pageState extends State<Competition_page> {
         child: WebView(
           initialUrl: 'https://www.picksfromthepaddock.co.uk/4forascore',
           javascriptMode: JavascriptMode.unrestricted,
-
-
         ),
       ),
     );

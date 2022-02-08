@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:picksfromthepaddock/SETUP/constants.dart';
 import 'package:picksfromthepaddock/WIDGET/appbarCustom.dart';
 import 'package:sizer/sizer.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+import 'dart:io';
 
 class Result_page extends StatefulWidget {
   var check;
@@ -13,6 +16,13 @@ class Result_page extends StatefulWidget {
 }
 
 class _Result_pageState extends State<Result_page> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if (Platform.isAndroid) WebView.platform = AndroidWebView();
+
+  }
   @override
   Widget build(BuildContext context) {
     var query = MediaQuery.of(context).size;
@@ -33,6 +43,35 @@ class _Result_pageState extends State<Result_page> {
         ],
       ),
       body: Container(
+       // height: query.height,
+        //width: query.width,
+        child: WebView(
+          initialUrl: 'http://icard.gbiracing.com/results',
+          javascriptMode: JavascriptMode.unrestricted,
+        ),
+      )
+      // WebviewScaffold(
+      //   url: "http://icard.gbiracing.com/results",
+      //   appBar: AppBar(
+      //     title: const Text(''),
+      //     backgroundColor: backgroundColor,
+      //     leading: Text(""),
+      //     elevation: 0,
+      //     toolbarHeight: 12.0.h,
+      //   ),
+      //   mediaPlaybackRequiresUserGesture: true,
+      //   displayZoomControls: true,
+      // )
+
+      /*Container(
+        height: query.height,
+        width: query.width,
+        child: WebView(
+          initialUrl: 'http://icard.gbiracing.com/results',
+          javascriptMode: JavascriptMode.unrestricted,
+        ),
+      ),*/
+      /*Container(
           height: query.height,
           width: query.width,
           child: Padding(
@@ -338,7 +377,7 @@ class _Result_pageState extends State<Result_page> {
                     ),
                   );
                 }),
-          )),
+          )),*/
     );
   }
 }

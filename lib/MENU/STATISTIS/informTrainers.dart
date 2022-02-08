@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:picksfromthepaddock/Controller/informTrainerController.dart';
+import 'package:picksfromthepaddock/Model/InformTrainerModel.dart';
 import 'package:picksfromthepaddock/SETUP/constants.dart';
 import 'package:picksfromthepaddock/WIDGET/appbarCustom.dart';
 import 'package:sizer/sizer.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class informTrainers extends StatefulWidget {
   var check;
@@ -13,6 +16,17 @@ class informTrainers extends StatefulWidget {
 }
 
 class _informTrainersState extends State<informTrainers> {
+  Future<InformTrainer> futureInformTrainers;
+
+  final InformTrainerController informTrainerController =
+      InformTrainerController();
+
+  @override
+  void initState() {
+    super.initState();
+    futureInformTrainers = informTrainerController.getInformTrainer();
+  }
+
   @override
   Widget build(BuildContext context) {
     var query = MediaQuery.of(context).size;
@@ -35,6 +49,14 @@ class _informTrainersState extends State<informTrainers> {
       body: Container(
         height: query.height,
         width: query.width,
+        child: WebView(
+          initialUrl: 'https://www.horseracing.net/stats',
+          javascriptMode: JavascriptMode.unrestricted,
+        ),
+      ),
+      /*Container(
+        height: query.height,
+        width: query.width,
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
@@ -47,582 +69,153 @@ class _informTrainersState extends State<informTrainers> {
                     fontFamily: "GlacialIndifference",
                     fontWeight: FontWeight.w400),
               ),
-              Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 5.h,
-                        width: query.width,
-                        color: primaryBlack,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "TRAINER",
-                                style: TextStyle(
-                                    fontSize: small,
-                                    color: primaryWhite,
-                                    fontFamily: "GlacialIndifference",
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              Text(
-                                "WINS",
-                                style: TextStyle(
-                                    fontSize: small,
-                                    color: primaryWhite,
-                                    fontFamily: "GlacialIndifference",
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              Text(
-                                "RUNS",
-                                style: TextStyle(
-                                    fontSize: small,
-                                    color: primaryWhite,
-                                    fontFamily: "GlacialIndifference",
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              Text(
-                                "STRIKE RATE",
-                                style: TextStyle(
-                                    fontSize: small,
-                                    color: primaryWhite,
-                                    fontFamily: "GlacialIndifference",
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ],
+              DataTable(
+                dividerThickness: 0,
+                //columnSpacing: 25.sp,
+                headingRowHeight: 4.5.h,
+                headingTextStyle: TextStyle(
+                    fontSize: 12.sp,
+                    color: primaryWhite,
+                    fontFamily: "GlacialIndifference",
+                    fontWeight: FontWeight.w400),
+                headingRowColor: MaterialStateColor.resolveWith((states) {
+                  return primaryBlack;
+                }),
+                dataRowColor: MaterialStateColor.resolveWith((states) {
+                  return primaryWhite;
+                }),
+
+                dataRowHeight: query.height / 2,
+                dataTextStyle: TextStyle(
+                    fontSize: small,
+                    color: primaryRed,
+                    fontFamily: "GlacialIndifference",
+                    fontWeight: FontWeight.w400),
+                columns: <DataColumn>[
+                  DataColumn(
+                    label: Container(
+                      width: 85.w,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "TRAINER",
                           ),
-                        ),
+                          Text(
+                            "WINS",
+                          ),
+                          Text(
+                            'RUNS',
+                          ),
+                          Text(
+                            'STRIKE RATE',
+                          ),
+                        ],
                       ),
-                      Container(
-                        color: primaryWhite,
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 2.h,
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Kerry Lee",
-                                    style: TextStyle(
-                                        fontSize: small,
-                                        color: primaryRed,
-                                        fontFamily: "GlacialIndifference",
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                  Text(
-                                    "4",
-                                    style: TextStyle(
-                                        fontSize: small,
-                                        color: primaryBlack,
-                                        fontFamily: "GlacialIndifference",
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                  Text(
-                                    "9",
-                                    style: TextStyle(
-                                        fontSize: small,
-                                        color: primaryBlack,
-                                        fontFamily: "GlacialIndifference",
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                  Text(
-                                    "44 %",
-                                    style: TextStyle(
-                                        fontSize: small,
-                                        color: primaryBlack,
-                                        fontFamily: "GlacialIndifference",
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              color: primaryWhite,
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20.0),
-                                    child: Row(
-                                      mainAxisAlignment:
+                    ),
+                  ),
+                ],
+                rows: <DataRow>[
+                  DataRow(
+                    cells: <DataCell>[
+                      DataCell(
+                        FutureBuilder<InformTrainer>(
+                          future: informTrainerController.getInformTrainer(),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              return Container(
+                                width: 80.w,
+                                child: ListView.builder(
+                                  itemCount: snapshot.data.data.length,
+                                  itemBuilder: (context, index) {
+                                    return Container(
+                                      height: 3.0.h,
+                                      child: Padding(
+                                        padding:
+                                        const EdgeInsets.only(top: 5.0),
+                                        child: Row(
+                                          mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Kerry Lee",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryRed,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
+                                          children: [
+                                            Container(
+                                                width: 15.w,
+                                                child: Text(snapshot
+                                                    .data.data[index].name)),
+                                            Container(
+                                                width: 10.w,
+                                                child: Text(
+                                                    snapshot
+                                                        .data.data[index].wins,
+                                                    style: TextStyle(
+                                                        fontSize: small,
+                                                        color: primaryBlack,
+                                                        fontFamily:
+                                                        "GlacialIndifference",
+                                                        fontWeight:
+                                                        FontWeight.w400))),
+                                            Container(
+                                                width: 10.w,
+                                                child: Text(
+                                                    snapshot
+                                                        .data.data[index].run,
+                                                    style: TextStyle(
+                                                        fontSize: small,
+                                                        color: primaryBlack,
+                                                        fontFamily:
+                                                        "GlacialIndifference",
+                                                        fontWeight:
+                                                        FontWeight.w400))),
+                                            Container(
+                                                width: 10.w,
+                                                child: Text(
+                                                    snapshot.data.data[index]
+                                                        .strikeRate,
+                                                    style: TextStyle(
+                                                        fontSize: small,
+                                                        color: primaryBlack,
+                                                        fontFamily:
+                                                        "GlacialIndifference",
+                                                        fontWeight:
+                                                        FontWeight.w400))),
+
+
+      Text(snapshot.data.data[index].wins),
+                                              Text(snapshot.data.data[index].run),
+                                              Text(snapshot.data.data[index].strikeRate),
+
+
+                                          ],
                                         ),
-                                        Text(
-                                          "4",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "9",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "44 %",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              color: primaryWhite,
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Kerry Lee",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryRed,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "4",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "9",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "44 %",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              color: primaryWhite,
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Kerry Lee",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryRed,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "4",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "9",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "44 %",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              color: primaryWhite,
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Kerry Lee",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryRed,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "4",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "9",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "44 %",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              color: primaryWhite,
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Kerry Lee",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryRed,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "4",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "9",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "44 %",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              color: primaryWhite,
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Kerry Lee",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryRed,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "4",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "9",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "44 %",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              color: primaryWhite,
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Kerry Lee",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryRed,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "4",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "9",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "44 %",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              color: primaryWhite,
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Kerry Lee",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryRed,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "4",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "9",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "44 %",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              color: primaryWhite,
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Kerry Lee",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryRed,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "4",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "9",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "44 %",
-                                          style: TextStyle(
-                                              fontSize: small,
-                                              color: primaryBlack,
-                                              fontFamily: "GlacialIndifference",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 1.h)
-                          ],
+                                      ),
+                                    );
+                                  },
+                                ),
+                              );
+                            } else if (snapshot.hasError) {
+                              return Text('${snapshot.error}');
+                            } else {
+                              Text("No Data",
+                                  style: TextStyle(
+                                      color: primaryBlack,
+                                      fontSize: medium,
+                                      fontFamily: "GlacialIndifference",
+                                      fontWeight: FontWeight.w700));
+                            }
+                            return Container(
+
+                                height: 25.h,
+                                child: Center(child: progressBar()));
+                          },
                         ),
                       ),
                     ],
-                  )),
+                  ),
+                ],
+              )
             ],
           ),
         ),
-      ),
+      ),*/
     );
   }
 }

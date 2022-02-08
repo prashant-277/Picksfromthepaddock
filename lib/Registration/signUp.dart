@@ -212,12 +212,14 @@ class _signUpState extends State<signUp> {
               text: TextSpan(
                 children: [
                   TextSpan(
+
                     style: TextStyle(
                         color: cwhite,
                         fontSize: medium,
                         fontFamily: "GlacialIndifference"),
                     text: "Already have an account?",
                   ),
+
                   WidgetSpan(child: SizedBox(width: 5)),
                   TextSpan(
                     style: TextStyle(

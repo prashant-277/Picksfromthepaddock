@@ -3,8 +3,9 @@ import 'package:picksfromthepaddock/HOME/homePage.dart';
 import 'package:picksfromthepaddock/MENU/Menu_page.dart';
 import 'package:picksfromthepaddock/NEWS/News_page.dart';
 import 'package:picksfromthepaddock/TIPS/Tips_page.dart';
-import 'package:picksfromthepaddock/WIDGET/appbarCustom.dart';
-import 'package:sizer/sizer.dart';
+
+import '../Facebook_page.dart';
+import '../Twitter_page.dart';
 class page extends StatelessWidget {
   final String title;
 
@@ -28,7 +29,6 @@ class page extends StatelessWidget {
       );
     } else if (title.toString() == "TIPS") {
       return Container(
-
         child: Tips_page(""),
       );
     } else if (title.toString() == "NEWS") {
@@ -38,15 +38,14 @@ class page extends StatelessWidget {
       );
     } else if (title.toString() == "FACEBOOK") {
       return Container(
-       // child: Community_page(),
+        child: Facebook_page(),
       );
     } else if (title.toString() == "TWITTER") {
       return Container(
-       // child: Profile_page(),
+        child: Twitter_page(),
       );
     }else if(title.toString() == "MENU"){
       return Container(
-
         child: Menu_page(),
       );
     }
